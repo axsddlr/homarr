@@ -126,6 +126,12 @@ services:
       - ./homarr/icons:/app/public/icons
     ports:
       - '7575:7575'
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
 ```
 
 ```sh
